@@ -1,6 +1,7 @@
 package com.tool;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -45,6 +46,12 @@ public class ExternalActivity extends BaseActivity {
         if (!DetectionManager.defaultManager().isBroadcastRegistered()) {
             DetectionManager.defaultManager().registerDevicesChangeBroadcast(ExternalActivity.this);
         }
+
+        //外设连接状态改变时，广播接收已连接外设
+        DetectionManager.defaultManager().obtainExternal(devices -> {
+            Log.i("devices:", devices.size() + "");
+            updateUI(devices);
+        });
     }
 
     //更新数据
