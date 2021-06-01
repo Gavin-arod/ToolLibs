@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_net_speed_test">重新测速</string>
+    <string name="cancel_test_net_speed">取消测速</string>
+    <string name="net_speed_testing">测速中…</string>
+    <string name="net_speed_test_done">测速完成</string>
+    <string name="connected_external">外接设备检测</string>
+    <string name="none_external_connected">暂无设备连接</string>
+    <string name="net_detection">网络检测</string>
+</resources>
