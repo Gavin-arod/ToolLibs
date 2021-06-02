@@ -5,4 +5,4 @@
 ![image](https://github.com/Gavin-arod/ToolLibs/blob/main/screenshots/external.png)
 - 实时网速检测
 
-![image](https://github.com/Gavin-arod/ToolLibs/blob/main/screenshots/netSpeed.png)
+![image](https://github.com/Gavin-arod/ToolLibs/blob/main/screenshots/internetSpeed.png)
