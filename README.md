@@ -2,9 +2,7 @@
 ## 包含功能：
 - 外接设备检测
 
-
-![image](https://raw.githubusercontent.com/Gavin-arod/ToolLibs\screenshots\external.png)
+![image](https://raw.githubusercontent.com/Gavin-arod/ToolLibs/blob/main/screenshots/external.png)
 - 实时网速检测
 
-
-![image](https://raw.githubusercontent.com/Gavin-arod/ToolLibs\screenshots\netSpeed.png)
+![image](https://raw.githubusercontent.com/Gavin-arod/ToolLibs/blob/main/screenshots/netSpeed.png)
