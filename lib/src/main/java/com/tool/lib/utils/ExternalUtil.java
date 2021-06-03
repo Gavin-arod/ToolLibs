@@ -60,17 +60,17 @@ public class ExternalUtil {
      * 判断是手柄
      */
     public static boolean isJoystick(InputDevice device) {
-        return (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
-                (device.getSources() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD &&
-                (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD;
+        return (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK
+                && (device.getSources() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD
+                && (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD;
     }
 
     /**
      * 判断是键盘
      */
     public static boolean isKeyboard(InputDevice device) {
-        return device.getSources() == InputDevice.SOURCE_KEYBOARD &&
-                device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
+        return device.getSources() == InputDevice.SOURCE_KEYBOARD 
+                && device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
     }
 
     /**
@@ -78,10 +78,10 @@ public class ExternalUtil {
      */
     public static boolean isMouse(InputDevice device) {
         return device.getSources() == InputDevice.SOURCE_MOUSE ||
-                ((device.getSources() & InputDevice.SOURCE_MOUSE) == InputDevice.SOURCE_MOUSE &&
-                        (device.getSources() & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD &&
-                        (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
-                        (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD);
+                ((device.getSources() & InputDevice.SOURCE_MOUSE) == InputDevice.SOURCE_MOUSE
+                        && (device.getSources() & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD
+                        && (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK
+                        && (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD);
     }
 
     /**
