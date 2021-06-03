@@ -35,34 +35,53 @@ public class ExternalUtil {
             }
 
             //判断外设：鼠标、键盘、手柄
-            if ((device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
-                    (device.getSources() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD &&
-                    (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD) {
-//                device.getSources() == 0x1000511
-                //手柄
-                //属性：keyboard joystick gamepad
-                ExternalDevice externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_JOYSTICK);
+            ExternalDevice externalDevice;
+            if (isJoystick(device)) {
+                //手柄属性：keyboard joystick gamepad
+                externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_JOYSTICK);
                 externalDeviceList.add(externalDevice);
-            } else if (device.getSources() == InputDevice.SOURCE_MOUSE ||
-                    ((device.getSources() & InputDevice.SOURCE_MOUSE) == InputDevice.SOURCE_MOUSE &&
-                            (device.getSources() & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD &&
-                            (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
-                            (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD)) {
+            } else if (isMouse(device)) {
                 //鼠标
                 //常规的鼠标：InputDevice.SOURCE_MOUSE
                 //非常规：属性：( keyboard dpad mouse joystick )
-                ExternalDevice externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_MOUSE);
+                externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_MOUSE);
                 externalDeviceList.add(externalDevice);
-            } else if (device.getSources() == InputDevice.SOURCE_KEYBOARD &&
-                    device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC) {
-                //键盘
-                //属性：keyboard
+            } else if (isKeyboard(device)) {
+                //键盘属性：keyboard
                 //Keyboard Type: alphabetic
-                ExternalDevice externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_KEYBOARD);
+                externalDevice = buildExternalDevice(device, Constants.TYPE_DEVICE_KEYBOARD);
                 externalDeviceList.add(externalDevice);
             }
         }
         return externalDeviceList;
+    }
+
+    /**
+     * 判断是手柄
+     */
+    public static boolean isJoystick(InputDevice device) {
+        return (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
+                (device.getSources() & InputDevice.SOURCE_GAMEPAD) == InputDevice.SOURCE_GAMEPAD &&
+                (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD;
+    }
+
+    /**
+     * 判断是键盘
+     */
+    public static boolean isKeyboard(InputDevice device) {
+        return device.getSources() == InputDevice.SOURCE_KEYBOARD &&
+                device.getKeyboardType() == InputDevice.KEYBOARD_TYPE_ALPHABETIC;
+    }
+
+    /**
+     * 判断是鼠标
+     */
+    public static boolean isMouse(InputDevice device) {
+        return device.getSources() == InputDevice.SOURCE_MOUSE ||
+                ((device.getSources() & InputDevice.SOURCE_MOUSE) == InputDevice.SOURCE_MOUSE &&
+                        (device.getSources() & InputDevice.SOURCE_DPAD) == InputDevice.SOURCE_DPAD &&
+                        (device.getSources() & InputDevice.SOURCE_JOYSTICK) == InputDevice.SOURCE_JOYSTICK &&
+                        (device.getSources() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD);
     }
 
     /**
